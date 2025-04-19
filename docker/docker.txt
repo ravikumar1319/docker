@@ -1,0 +1,11 @@
+docker ps – Lists running containers. Use docker ps -a to see all containers, including stopped ones.
+
+docker start <container_id> – Starts a stopped container.
+
+docker stop <container_id> – Stops a running container gracefully.
+
+docker ps -a – Shows all containers (running + stopped).
+
+docker run <image> – Creates and starts a new container from an image.
+
+docker run -d <image> – Runs a container in detached mode (background).

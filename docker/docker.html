@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Commands Reference</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="./images/docker-thumbnail.png" alt="Docker Logo">
+        <h2>Docker Commands Reference</h2>
+    </div>
+    <section>
+        <div class="section-title">Miscellaneous</div>
+        <div class="command-row"><code>docker pull &lt;image&gt;</code>
+            <p>Downloads an image from Docker Hub.</p>
+        </div>
+    </section>
+    <br>
+    <div class="grid-3">
+        <section>
+            <div class="section-title">Difference Between <code>docker run</code> and <code>docker start</code>
+            </div>
+            <div class="command-row"><code>docker run &lt;image&gt;</code>
+                <p>Creates and starts a new container from an image. A new container ID is generated.</p>
+            </div>
+            <div class="command-row"><code>docker start &lt;container_id&gt;</code>
+                <p>Starts an existing (stopped) container without creating a new one.</p>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">Container Lifecycle</div>
+            <div class="command-row"><code>docker ps</code>
+                <p>Lists running containers. Use <code>docker ps -a</code> to see all.</p>
+            </div>
+            <div class="command-row"><code>docker start &lt;container_id&gt;</code>
+                <p>Starts a stopped container.</p>
+            </div>
+            <div class="command-row"><code>docker stop &lt;container_id&gt;</code>
+                <p>Stops a running container gracefully.</p>
+            </div>
+            <div class="command-row"><code>docker run &lt;image&gt;</code>
+                <p>Creates and starts a new container from an image.</p>
+            </div>
+            <div class="command-row"><code>docker run -d &lt;image&gt;</code>
+                <p>Runs a container in detached mode (background).</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Logs & Shell Access</div>
+            <div class="command-row"><code>docker logs &lt;container_id&gt;</code>
+                <p>Shows logs of a container.</p>
+            </div>
+            <div class="command-row"><code>docker logs | tail</code>
+                <p>Shows the last few log lines of a container.</p>
+            </div>
+            <div class="command-row"><code>docker logs -f &lt;container_id&gt;</code>
+                <p>Follows real-time logs of a container.</p>
+            </div>
+            <div class="command-row"><code>docker exec -it &lt;container_id&gt; bash</code>
+                <p>Accesses the container's shell interactively.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Networking</div>
+            <div class="command-row"><code>docker run -p &lt;host_port&gt;:&lt;container_port&gt; &lt;image&gt;</code>
+                <p>Maps container’s internal port to a host port.</p>
+            </div>
+            <div class="command-row"><code>docker network ls</code>
+                <p>Lists all Docker networks.</p>
+            </div>
+            <div class="command-row"><code>docker network create &lt;network_name&gt;</code>
+                <p>Creates a new Docker network.</p>
+            </div>
+            <div class="command-row"><code>docker run --net &lt;network_name&gt; &lt;image&gt;</code>
+                <p>Runs a container on a specific network.</p>
+            </div>
+            <div class="command-row"><code>docker network rm &lt;network_name_or_id&gt; </code>
+                <p>To delete a Docker network.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Environment & Naming</div>
+            <div class="command-row"><code>docker run -e "ENV_VAR=value" &lt;image&gt;</code>
+                <p>Runs a container with environment variables.</p>
+            </div>
+            <div class="command-row"><code>docker run --name &lt;container_name&gt; &lt;image&gt;</code>
+                <p>Runs a container with a specific name.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Docker Compose</div>
+            <div class="command-row">
+                <code>docker compose -f &lt;file-name&gt; up -d</code>
+                <p>Starts services from a specific Compose file in detached mode.</p>
+            </div>
+            <div class="command-row"><code>docker compose &lt;file-name&gt; down</code>
+                <p>Stops and removes services from a specific Compose file.</p>
+            </div>
+        </section>
+
+
+
+    </div>
+    <div style="margin-top: 1rem;"></div>
+    <div class="grid-2">
+        <section>
+            <div class="section-title">Basic <code>docker-compose.yaml</code> Example</div>
+            <div class="body">
+                <h3>What is YAML?</h3>
+                <p><strong>YAML</strong> stands for <em>“Yet Another Markup Language”</em>. It's a human-readable
+                    configuration
+                    format
+                    used in Docker Compose files.</p>
+
+                <p>This is a simple example showing how to use <code>docker-compose</code> with a Mongo Express and a
+                    MongoDB
+                    database.</p>
+
+                <h3>Why do we use a <code>docker-compose.yaml</code> file?</h3>
+                <p>
+                    Docker Compose simplifies the process of defining and running multi-container Docker applications.
+                    Instead
+                    of starting containers one-by-one with long <code>docker run</code> commands, we can define all
+                    services,
+                    networks, and volumes in a single file and spin them up using one simple command:
+                    <code>docker-compose up</code>.
+                </p>
+                <ul>
+                    <li>Centralized configuration for multi-container setups</li>
+                    <li>Reusable and version-controllable setup for development and testing</li>
+                    <li>Automatic network creation and service linking</li>
+                </ul>
+
+                <h4><strong>Key Points:</strong></h4>
+                <ul>
+                    <li><code>mongo</code>: A MongoDB database service running in a Docker container.</li>
+                    <li><code>mongo-express</code>: A web-based MongoDB admin interface to interact with MongoDB.</li>
+                </ul>
+
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Use Docker Compose file format version 3.8
+version: "3.8"
+
+services: 
+  # MongoDB service definition
+  mongo: 
+    image: mongo  # Official MongoDB image
+    ports:
+      - 27017:27017  # Expose port 27017 to the host
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin  # MongoDB root username
+      MONGO_INITDB_ROOT_PASSWORD: qwerty  # MongoDB root password
+
+  # Mongo Express service definition
+  mongo-express:
+    image: mongo-express  # Official Mongo Express image
+    ports:
+      - 8081:8081  # Expose the UI on port 8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin  # Same credentials as MongoDB
+      ME_CONFIG_MONGODB_ADMINPASSWORD: qwerty
+      ME_CONFIG_MONGODB_URL: mongodb://admin:qwerty@mongo:27017/ # Mongo Connection string
+</code></pre>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section-title">Understanding a Basic <code>Dockerfile</code></div>
+            <div class="body">
+                <p>A <strong>Dockerfile</strong> is a script used to create a Docker image. It contains step-by-step
+                    instructions to define the environment and how to run your application inside a container.</p>
+
+                <h4><strong>Key Instructions in a Dockerfile:</strong></h4>
+                <ul>
+                    <li><code>FROM</code>: Specifies the base image to use. All containers start from a base image. <br>
+                        Example : <code>FROM node</code> – This uses the official Node.js image from
+                        Docker
+                        Hub
+                        as the base.
+                    </li>
+
+                    <li><code>WORKDIR</code>: Sets the working directory inside the container. Any command will now run
+                        from
+                        this directory.<br>
+                        Example : <code>WORKDIR /app</code>
+                    </li>
+
+                    <li><code>COPY</code>: Copies files from your host machine into the container's file system.<br>
+                        Example : <code>COPY . /app</code> – This copies everything from the current
+                        directory
+                        into <code>/app</code> in the container.
+                    </li>
+
+                    <li><code>RUN</code>: Executes a command in the image while building the Docker image. You can use
+                        multiple
+                        <code>RUN</code> commands.<br>
+                        Example : <code>RUN mkdir -p /app</code> – Creates a directory named
+                        <code>/app</code>
+                        in the container.
+                    </li>
+
+                    <li><code>CMD</code>: Defines the command to run when the container starts. You can only have one
+                        <code>CMD</code> in a Dockerfile.<br>
+                        Example : <code>CMD ["node", "/app/server.js"]</code> – Runs your Node.js
+                        application
+                        when the container starts.
+                    </li>
+
+                    <li><code>EXPOSE</code>: Indicates which port the container listens on. It does not actually publish
+                        the
+                        port.<br>
+                        Example : <code>EXPOSE 3000</code>
+                    </li>
+
+                    <li><code>ENV</code>: Sets environment variables inside the container.<br>
+                        Example :
+                        <pre><code>ENV MONGO_DB_USERNAME=admin \
+    MONGO_DB_PASSWORD=qwerty</code></pre>
+                    </li>
+                </ul>
+
+                <h4><strong>Example Dockerfile</strong></h4>
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    <pre><code># Use the official Node.js image as the base image
+FROM node
+ 
+ # Set environment variables that can be accessed inside the container
+ ENV MONGO_DB_USERNAME=admin \
+     MONGO_DB_PASSWORD=qwerty
+ 
+ # Create a directory named 'dockerapp' inside the container
+ RUN mkdir -p dockerapp
+ 
+ # Copy all files from the current host directory to the 'dockerapp' directory in the container
+ COPY . /dockerapp
+ 
+ # Define the command to run the application when the container starts
+ CMD ["node", "/dockerapp/server.js"]
+                    
+</code></pre>
+                </div>
+                <h4><strong>Building the Docker Image</strong></h4>
+                <p>Use the following command to build your Docker image from the Dockerfile:</p>
+                <pre><code>docker build -t dockerapp:1.0 .</code></pre>
+
+                <p>This command creates an image named <code>dockerapp</code> with a version tag <code>1.0</code>.
+                </p>
+            </div>
+        </section>
+    </div>
+    <script>
+        function copyCode(button) {
+            const code = button.nextElementSibling.innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                button.innerText = "Copied!";
+                setTimeout(() => (button.innerText = "Copy"), 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
