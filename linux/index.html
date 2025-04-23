@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Commands Reference</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="header">
+        <img src="../images/linux-thumbnail.png" alt="Linux Logo">
+        <h2>Linux Commands Reference</h2>
+    </div>
+    <div class="grid-3">
+
+        <section>
+            <div class="section-title"><code>uname</code></div>
+            <div class="command-row">
+                <code>uname -a</code>
+                <p>Displays system information like kernel name, version, architecture, and OS.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>pwd</code></div>
+            <div class="command-row">
+                <code>pwd</code>
+                <p>Prints the current working directory.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>cd</code></div>
+            <div class="command-row">
+                <code>cd /etc</code>
+                <p>Changes the current directory to <code>/etc</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>ls</code></div>
+            <div class="command-row">
+                <code>ls -l</code>
+                <p>Lists directory contents with detailed info like permissions, size, and date.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>cat</code></div>
+            <div class="command-row">
+                <code>cat file.txt</code>
+                <p>Displays the contents of the file <code>file.txt</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>grep</code></div>
+            <div class="command-row">
+                <code>grep "hello" file.txt</code>
+                <p>Searches for the word "hello" inside <code>file.txt</code> and prints matching lines.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>cp</code></div>
+            <div class="command-row">
+                <code>cp source.txt backup.txt</code>
+                <p>Copies <code>source.txt</code> to <code>backup.txt</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>wc</code></div>
+            <div class="command-row">
+                <code>wc -l file.txt</code>
+                <p>Counts the number of lines in <code>file.txt</code>.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>find</code></div>
+            <div class="command-row">
+                <code>find . -name "*.txt"</code>
+                <p>Finds all <code>.txt</code> files in the current directory and its subdirectories.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>diff</code></div>
+            <div class="command-row">
+                <code>diff file1.txt file2.txt</code>
+                <p>Compares the content of two files and shows the differences line by line.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>curl</code></div>
+            <div class="command-row">
+                <code>curl https://example.com</code>
+                <p>Fetches the HTML content of the specified website URL.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title"><code>vim</code></div>
+            <div class="command-row">
+                <code>vim file.txt</code>
+                <p>Opens <code>file.txt</code> in the Vim text editor. Use <code>:wq</code> to save and quit.</p>
+            </div>
+        </section>
+        <section>
+            <div class="section-title"><code>chmod Symbolic Mode (u, g, o, a)</code></div>
+            <div class="command-row">
+                <code>Symbol</code>
+                <p>Represents the entity on which permissions are applied.</p>
+            </div>
+            
+            <div class="command-row">
+                <code>u</code>
+                <p>User (owner) of the file.</p>
+            </div>
+            
+            <div class="command-row">
+                <code>g</code>
+                <p>Group associated with the file.</p>
+            </div>
+            
+            <div class="command-row">
+                <code>o</code>
+                <p>Others (everyone except user and group).</p>
+            </div>
+            
+            <div class="command-row">
+                <code>a</code>
+                <p>All (user + group + others).</p>
+            </div>
+            
+            <div class="command-row">
+                <code>Operator</code>
+                <p>Defines the action on the permissions.</p>
+            </div>
+            
+            <div class="command-row">
+                <code>+</code>
+                <p>Add permission.</p>
+            </div>
+            
+            <div class="command-row">
+                <code>-</code>
+                <p>Remove permission.</p>
+            </div>
+            
+            <div class="command-row">
+                <code>=</code>
+                <p>Set exact permission (overwrites existing permissions).</p>
+            </div>
+            
+        </section>
+        <section>
+            <div class="section-title"><code>chmod Symbolic Mode Example</code></div>
+            <div class="command-row">
+                <code>chmod u+x file.sh</code>
+                <p>Adds execute permission for the user (owner) of the file.</p>
+            </div>
+
+            <div class="command-row">
+                <code>chmod g-w file.sh</code>
+                <p>Removes write permission for the group associated with the file.</p>
+            </div>
+
+            <div class="command-row">
+                <code>chmod o=r file.sh</code>
+                <p>Gives read-only permission to others (everyone except user and group).</p>
+            </div>
+
+            <div class="command-row">
+                <code>chmod a+x script.py</code>
+                <p>Adds execute permission for all: user, group, and others.</p>
+            </div>
+
+            <div class="command-row">
+                <code>chmod u=rwx,g=rx,o=r file.sh</code>
+                <p>Sets permissions: user can read/write/execute; group can read/execute; others can only read.</p>
+            </div>
+        </section>
+        <section>
+            <div class="section-title"><code>chmod Numeric Mode (Octal)</code></div>
+            <div class="command-row">
+                <code>chmod 755 file.sh</code>
+                <p>Sets permissions: user = rwx, group = r-x, others = r-x (commonly used for executable scripts).</p>
+            </div>
+
+            <div class="command-row">
+                <code>chmod 644 document.txt</code>
+                <p>Sets permissions: user = rw-, group = r--, others = r-- (used for text files).</p>
+            </div>
+
+            <div class="command-row">
+                <code>chmod 700 secret.txt</code>
+                <p>Grants full permissions to user only; no access for group or others (for private files).</p>
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>

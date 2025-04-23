@@ -39,11 +39,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            cursor:pointer;
+            cursor: pointer;
         }
 
         .col-4 img {
-            width: 100px; /* Adjust image size */
+            width: 100px;
+            /* Adjust image size */
             height: auto;
             margin-bottom: 10px;
         }
@@ -54,20 +55,68 @@
             font-weight: bold;
             margin-top: 10px;
         }
+
+        .page-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Docker image style */
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            /* Ensures image maintains aspect ratio */
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Style for the text under the image */
+        .page-link .text-center {
+            display: block;
+            margin-top: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--code-color);
+            text-transform: uppercase;
+        }
+
+        /* Hover effect for the Docker link */
+        .page-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px var(--box-shadow-color);
+        }
     </style>
 </head>
 
 <body>
     <h1>Landing Page</h1>
     <div class="col-4">
-        <div>
-            <img src="./images/docker-thumbnail.png" alt="Docker Logo">
-            <a href="./docker.html">Docker</a>
+
+        <div class="page-link">
+            <a href="./linux/index.html">
+                <img src="./images/linux-thumbnail.png" alt="Docker Logo" class="thumbnail">
+                <span class="text-center">Linux</span>
+            </a>
         </div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-    </div>
+        <div class="page-link">
+            <a href="./docker/index.html">
+                <img src="./images/docker-thumbnail.png" alt="Linux Logo" class="thumbnail">
+                <span class="text-center">Docker</span>
+            </a>
+        </div>
+        <div class="page-link">
+            <a href="./index.html">
+                <h3>Comming Soon</h3>
+            </a>
+        </div>
+        <div class="page-link">
+            <a href="./index.html">
+                <h3>Comming Soon</h3>
+            </a>
+        </div>
 </body>
 
 </html>

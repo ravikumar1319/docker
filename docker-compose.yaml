@@ -1,0 +1,7 @@
+services:
+  app: 
+    build: .
+    image: static-web
+    container_name: static-web
+    ports:
+      - 8080:80

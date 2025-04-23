@@ -1,141 +1,154 @@
         :root {
-            /* Default light theme */
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --table-border: #ddd;
-            --table-header: #f4f4f4;
-            --code-color: #d63384;
+          /* Default light theme */
+          --bg-color: #ffffff;
+          --text-color: #000000;
+          --table-border: #ddd;
+          --table-header: #f4f4f4;
+          --code-color: #d63384;
+          --box-shadow-color: rgba(0, 0, 0, 0.3);
         }
+
         @media (prefers-color-scheme: dark) {
-            /* Dark theme */
-            :root {
-                --bg-color: #121212;
-                --text-color: #ffffff;
-                --table-border: #444;
-                --table-header: #1e1e1e;
-                --code-color: #ffcc00;
-            }
+
+          /* Dark theme */
+          :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --table-border: #444;
+            --table-header: #1e1e1e;
+            --code-color: #ffcc00;
+            --box-shadow-color: rgba(255, 255, 255, 0.2);
+
+          }
         }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          background-color: var(--bg-color);
+          color: var(--text-color);
+          transition: background-color 0.3s, color 0.3s;
         }
+
         table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
         }
-        th, td {
-            border: 1px solid var(--table-border);
-            padding: 10px;
-            text-align: left;
+
+        th,
+        td {
+          border: 1px solid var(--table-border);
+          padding: 10px;
+          text-align: left;
         }
+
         th {
-            background-color: var(--table-header);
+          background-color: var(--table-header);
         }
+
         code {
-            color: var(--code-color);
+          color: var(--code-color);
         }
+
         .header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
+
         .header img {
-            width: 50px;
-            height: auto;
+          width: 50px;
+          height: auto;
         }
 
         pre {
-            background-color: var(--table-header);
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            font-size: 14px;
+          background-color: var(--table-header);
+          padding: 15px;
+          border-radius: 5px;
+          overflow-x: auto;
+          font-size: 14px;
         }
 
         .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 1rem;
-          }
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+          gap: 1rem;
+        }
 
-          .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(750px, 1fr));
-            gap: 1rem;
-          }
-      
-          .grid-2 .body{
-            padding-left: 1rem;
-          }
-          section {
-            background: var(--bg-color);
-            border: 1px solid var(--table-border);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
+        .grid-2 {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(750px, 1fr));
+          gap: 1rem;
+        }
+
+        .grid-2 .body {
+          padding-left: 1rem;
+        }
+
+        section {
+          background: var(--bg-color);
+          border: 1px solid var(--table-border);
+          border-radius: 8px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .section-title {
+          background: var(--table-header);
+          color: var(--text-color);
+          padding: 0.75rem 1rem;
+          font-weight: bold;
+        }
+
+        .command-row {
+          display: flex;
+          flex-wrap: wrap;
+          padding: 0.75rem 1rem;
+          border-top: 1px solid var(--table-border);
+        }
+
+        .command-row code {
+          flex: 1 1 40%;
+          font-weight: bold;
+          color: var(--code-color);
+        }
+
+        .command-row p {
+          flex: 1 1 60%;
+          margin: 0;
+          color: var(--text-color);
+        }
+
+        @media (max-width: 600px) {
+          .command-row {
             flex-direction: column;
           }
-      
-          .section-title {
-            background: var(--table-header);
-            color: var(--text-color);
-            padding: 0.75rem 1rem;
-            font-weight: bold;
-          }
-      
-          .command-row {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0.75rem 1rem;
-            border-top: 1px solid var(--table-border);
-          }
-      
-          .command-row code {
-            flex: 1 1 40%;
-            font-weight: bold;
-            color: var(--code-color);
-          }
-      
-          .command-row p {
-            flex: 1 1 60%;
-            margin: 0;
-            color: var(--text-color);
-          }
-      
-          @media (max-width: 600px) {
-            .command-row {
-              flex-direction: column;
-            }
-      
-            .command-row code,
-            .command-row p {
-              flex: 1 1 100%;
-              margin-bottom: 0.5rem;
-            }
-          }
 
-          .code-container {
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            width: fit-content
+          .command-row code,
+          .command-row p {
+            flex: 1 1 100%;
+            margin-bottom: 0.5rem;
           }
-          
-          .copy-btn {
-            position: absolute;
-            right: 5%;
-            top: 10%;
-            background-color: var(--code-color);
-            border: none;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-        
-          }
-          
+        }
+
+        .code-container {
+          position: relative;
+          display: flex;
+          align-items: flex-end;
+          width: fit-content
+        }
+
+        .copy-btn {
+          position: absolute;
+          right: 5%;
+          top: 10%;
+          background-color: var(--code-color);
+          border: none;
+          cursor: pointer;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+
+        }
